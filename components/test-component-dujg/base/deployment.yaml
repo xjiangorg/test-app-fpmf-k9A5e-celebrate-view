@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-dujg
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-dujg
+    app.kubernetes.io/part-of: test-app-fpmf
+  name: test-component-dujg
+  namespace: build-e2e-oaqs-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+      app.kubernetes.io/instance: test-component-dujg
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+        app.kubernetes.io/instance: test-component-dujg
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:7a96f9ad548642e69851edd4c8b08bd5
+        name: my-python
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
