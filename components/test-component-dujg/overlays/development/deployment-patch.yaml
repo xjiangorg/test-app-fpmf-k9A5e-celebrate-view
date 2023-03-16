@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: test-component-dujg
+  namespace: build-e2e-oaqs-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:7ddd7a2894783671609bc679cebbba5d837735d4927d6b3f9101517507df33b1
+        name: my-python
+        resources: {}
+status: {}
